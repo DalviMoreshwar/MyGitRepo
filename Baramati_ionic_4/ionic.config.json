@@ -1,5 +1,7 @@
 {
   "name": "Baramati_ionic_4",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
