@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { RestServiceService } from '../services/rest-service.service';
 
 @Component({
   selector: 'app-home',
@@ -9,24 +10,28 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 })
 export class HomePage {
 
-  constructor(private geolocation: Geolocation) {
+  lat: number;
+  long: number;
+  weatherData: any;
 
-this.geolocation.getCurrentPosition().then((resp) => {
-    // resp.coords.latitude
-    console.log(resp.coords.latitude);
-    // resp.coords.longitude
-    console.log(resp.coords.longitude);
-   }).catch((error) => {
-     console.log('Error getting location', error);
-   });
+  constructor(private geolocation: Geolocation, private restProvider: RestServiceService) {
+   this.currentWeather();
+  }
 
-let watch = this.geolocation.watchPosition();
-watch.subscribe((data) => {
-    // data can be a set of coordinates, or an error (if an error occurred).
-    // data.coords.latitude
-    console.log(data.coords.latitude);
-    // data.coords.longitude
-    console.log(data.coords.longitude);
-   });
+  currentWeather(){
+    this.geolocation.getCurrentPosition().then((resp) => {
+      // resp.coords.latitude
+      console.log(resp.coords.latitude);
+      this.lat = resp.coords.latitude;
+      // resp.coords.longitude
+      console.log(resp.coords.longitude);
+      this.long = resp.coords.longitude;
+      this.restProvider.getWeather(this.lat, this.long).subscribe(result => {
+        this.weatherData = result;
+        console.log(this.weatherData);
+      });
+     }).catch((error) => {
+       console.log('Error getting location', error.message);
+     });
   }
 }

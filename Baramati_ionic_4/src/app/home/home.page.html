@@ -11,6 +11,11 @@
 
 <ion-content>
   <ion-card>
-    
+    <ion-item>
+      {{weatherData.name}}
+      <ion-button (click)="currentWeather()" fill="clear" slot="end" >
+        <ion-icon name="sync" ></ion-icon>
+      </ion-button>
+    </ion-item>
   </ion-card>
 </ion-content>
