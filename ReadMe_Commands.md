@@ -1,4 +1,4 @@
-#Ionic 4 Offline Mode Application: Commands Used
+# Ionic 4 Offline Mode Application: Commands Used
 
 ```bash
 > ionic start offlineMode blank --type=angular
