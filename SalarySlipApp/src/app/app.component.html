@@ -1,0 +1,41 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="container">
+    <span>Salary Slip</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<div class="example-container container">
+      
+  <div class="row">
+    <div class="col-4">
+      <mat-form-field>
+        <input matInput placeholder="Salary Month" [(ngModel)]="salaryMonth" >
+      </mat-form-field>            
+    </div>
+
+    <div class="col-4">
+      <mat-form-field>
+        <input matInput placeholder="Date of joining" [(ngModel)]="joinedDate" >
+      </mat-form-field>            
+    </div>
+
+    <div class="col-4">
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field> 
+    </div>
+  </div>
+
+  
+  
+  <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+</div> 
+
+  
+
+<router-outlet></router-outlet>
