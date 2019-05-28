@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatCardModule, MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatToolbarModule, MatIconModule, MatGridListModule, MatDatepickerModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatToolbarModule, MatIconModule, MatGridListModule, MatDatepickerModule, MatNativeDateModule, MatDividerModule, MatSnackBarModule, MatTableModule } from '@angular/material';
 import {  } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 
@@ -19,7 +19,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatCardModule, MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatToolbarModule, MatIconModule, MatGridListModule, MatDatepickerModule
+    MatCardModule, MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatToolbarModule, MatIconModule, MatGridListModule, MatDatepickerModule, MatNativeDateModule, MatDividerModule, MatGridListModule, MatSnackBarModule, MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

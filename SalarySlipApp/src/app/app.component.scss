@@ -14,3 +14,13 @@
   .example-spacer {
     flex: 1 1 auto;
   }
+
+  table {
+    width: 100%;
+  }
+
+  .table th, .table td {
+    padding: 0.2rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}

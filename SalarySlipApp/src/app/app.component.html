@@ -18,24 +18,314 @@
 
     <div class="col-4">
       <mat-form-field>
-        <input matInput placeholder="Date of joining" [(ngModel)]="joinedDate" >
+        <input matInput placeholder="PF Number" [(ngModel)]="pfNum" >
       </mat-form-field>            
     </div>
 
     <div class="col-4">
-        <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field> 
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date"  [(ngModel)]="joinedDate" >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field> 
     </div>
   </div>
 
+  <div class="row">
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Employee Name" [(ngModel)]="empName" >
+        </mat-form-field>            
+      </div>
   
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Designation" [(ngModel)]="designation" >
+        </mat-form-field>            
+      </div>
   
-  <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+      <div class="col-4">
+          <mat-form-field>
+            <input matInput placeholder="Account Number" [(ngModel)]="accNum" >
+          </mat-form-field>   
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h5 style="margin-top: 15px;">Monthly Income</h5>
+
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Basic" [(ngModel)]="basic" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="DA" [(ngModel)]="da" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="H.R.A." [(ngModel)]="hra" >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Aother Allowances" [(ngModel)]="athorAllowance" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Conveyance" [(ngModel)]="conveyance" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Medical" [(ngModel)]="medical" >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="L.T.A" [(ngModel)]="lta" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Bonus" [(ngModel)]="Bonus" >
+        </mat-form-field>
+      </div>
+      <!-- <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Gross Pay" [(ngModel)]="grossPay" >
+        </mat-form-field>
+      </div> -->
+    </div>
+
+   
+    <mat-divider></mat-divider>
+
+    <h5 style="margin-top: 15px;">Monthly Deduction</h5>
+
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="E.S.I" [(ngModel)]="esi" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="E.P.F" [(ngModel)]="epf" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="LIC From Salary" [(ngModel)]="LIC" >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Income Tax" [(ngModel)]="incomeTax" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Profession Tax" [(ngModel)]="proTax" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Other Deduction" [(ngModel)]="otherDeduction" >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="PF" [(ngModel)]="pf" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Deposit" [(ngModel)]="deposit" >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Leave" [(ngModel)]="Leave" >
+        </mat-form-field>
+      </div>
+    </div>
+
+      
+    <mat-grid-list cols="1" rowHeight="100px" >
+      <mat-grid-tile
+          [colspan]="1">
+          <button *ngIf="!flag" mat-raised-button color="primary" (click)="submit()">Preview</button>
+          <!-- <button *ngIf="flag" mat-raised-button color="danger" (click)="close()">Close</button> -->
+          <button mat-raised-button color="primary" *ngIf="flag" value="CPTURE" (click)="makePDF()">Capture PDF</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  
 </div> 
 
-  
+  <div *ngIf="flag" id="contentToConvert"  class="container">
+    <div class="" style="text-align: left;" >
+      <div style="text-align: center;">
+          <h4>InfoWorld Consultancy Pvt. Ltd.</h4>
+          <p style="font-size:14px">201, Patil Plaza Mitramandal Chowk, Pune - 411 009</p>
+          <p>Salary for the Month of <strong>{{salaryMonth}}</strong></p>
+      </div>
+      <mat-divider></mat-divider>
+
+      <div class="row" style="margin-top: 10px; text-align: left;">
+        <div class="col-6">
+          <strong>PF No:</strong> {{pfNum}}
+        </div>
+        <div class="col-6">
+          <strong>Date of Join:</strong> {{joined_date}}
+        </div>
+      </div>
+
+      <div class="row" style="text-align: left;">
+        <div class="col-6">
+         <strong> Name:</strong> {{empName}}
+        </div>
+        <div class="col-6">
+          <strong>Account Number:</strong> {{accNum}}
+        </div>
+      </div>
+
+      <div class="row" style="text-align: left;">
+        <div class="col-6">
+          <strong>Designation:</strong> {{designation}}
+        </div>
+        <div class="col-6">
+          <strong>Location:</strong> Pune
+        </div>
+      </div>
+    </div>
+
+    <mat-divider style="margin-top: 10px;"></mat-divider>
+    <mat-divider style="margin-bottom: 10px;"></mat-divider>
+
+    <!-- //table -->
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Sr. No.</th>
+          <th scope="col">Monthly Income</th>
+          <th scope="col">Rs.</th>
+          <th scope="col">Sr. No</th>
+          <th scope="col">Monthly Deductions</th>          
+          <th scope="col">Rs.</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Basic</td>
+          <td>{{basic | number: '1.2-2'}}</td>
+          <th scope="row">1</th>
+          <td>E.S.I.</td>
+          <td>{{esi | number: '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>DA</td>
+          <td>{{da | number: '1.2-2'}}</td>
+          <th scope="row">2</th>
+          <td>E.P.F.</td>
+          <td>{{epf | number: '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>H.R.A.</td>
+          <td>{{hra | number: '1.2-2'}}</td>
+          <th scope="row">3</th>
+          <td>LIC From Salary</td>
+          <td>{{LIC | number: '1.2-2'}}</td>
+        </tr>
+
+        <tr>
+          <th scope="row">4</th>
+          <td>Other Allowances</td>
+          <td>{{athorAllowance | number: '1.2-2'}}</td>
+          <th scope="row">4</th>
+          <td>Income Tax</td>
+          <td>{{incomeTax | number: '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>Conveyance</td>
+          <td>{{conveyance | number: '1.2-2'}}</td>
+          <th scope="row">5</th>
+          <td>Profession Tax</td>
+          <td>{{proTax | number: '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>Medical</td>
+          <td>{{medical | number: '1.2-2'}}</td>
+          <th scope="row">6</th>
+          <td>Other Deductions</td>
+          <td>{{otherDeduction | number: '1.2-2'}}</td>
+        </tr>
+
+        <tr>
+          <th scope="row">7</th>
+          <td>L.T.A</td>
+          <td>{{lta | number: '1.2-2'}}</td>
+          <th scope="row">7</th>
+          <td>PF </td>
+          <td>{{pf | number: '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td>Bonus</td>
+          <td>{{Bonus | number: '1.2-2'}}</td>
+          <th scope="row">8</th>
+          <td>Deposit</td>
+          <td>{{deposit | number: '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th scope="row">9</th>
+          <td><strong>Gross Pay</strong></td>
+          <td>{{grossPay | number: '1.2-2'}}</td>
+          <th scope="row">9</th>
+          <td>Leave</td>
+          <td>{{Leave | number: '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>Net Salary</td>
+          <td> <strong>{{grossPay - totalDeduction | number: '1.2-2'}}</strong> </td>
+          <th></th>
+          <td>Total Deductions</td>
+          <td>{{totalDeduction | number: '1.2-2'}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h6>Net Pay: {{grossPay - totalDeduction | number: '1.2-2'}} ({{grossPayWords | titlecase}} Only)					
+    </h6>
+
+    <mat-divider style="margin-top: 10px;"></mat-divider>
+    <mat-divider style="margin-bottom: 10px;"></mat-divider>
+
+    
+  </div>
 
 <router-outlet></router-outlet>
